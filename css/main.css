@@ -1,0 +1,229 @@
+:root {
+  --bgColor: #0e1013;
+  --colorFont: #d5d5d5;
+  --containerWidth: 100vw;
+  --containerHeight: calc(var(--elementHeight) + 50px);
+  --elementWidth: 600px;
+  --elementHeight: 400px;
+
+  --scroll-bar-color: black;
+  --scroll-thumb-color: #ccc;
+}
+
+@font-face {
+  font-family: 'sienthas';
+  src: url(../fonts/sienthas.otf), url(../fonts/Sienthas-BWpww.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "consola";
+  src: url(fonts/consola.ttf);
+}
+
+@font-face {
+  font-family: "consola";
+  src: local(consola), url(../fonts/consolab.ttf);
+  font-weight: bold;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  background-color: var(--bgColor);
+  font-family: consolas;
+  color: var(--colorFont);
+}
+
+.container {
+  max-width: 85rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+::selection {
+  background-color: white;
+  color: var(--bgColor);
+}
+
+/* SCROLL BAR */
+::-webkit-scrollbar {
+  width: .60rem;
+  border-radius: .5rem;
+  background-color: var(--scroll-bar-color);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: .5rem;
+  background-color: var(--scroll-thumb-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: azure;
+}
+
+/* HEADER CSS */
+.header {
+  width: 100%;
+  height: calc(100vh - 53px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.name h1 {
+  font-family: sienthas;
+  font-weight: normal;
+  font-size: 5rem;
+  color: #fff;
+}
+
+.sobre span {
+  font-size: 1.5rem;
+  color: var(--colorFont);
+  opacity: 70%;
+}
+
+.setaBaixo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 53px;
+
+  font-size: 0.8rem;
+  color: var(--colorFont);
+  animation: setaheader 1.5s ease-in-out infinite;
+}
+
+@keyframes setaheader {
+  0% {
+    transform: translateY(-20px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+/* ABOUT CSS */
+
+.about {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.aboutMe {
+  display: none;
+  position: absolute;
+  font-size: 10rem;
+  color: var(--colorFont);
+  text-transform: uppercase;
+}
+
+.aboutMe.ativo {
+  animation: aboutMe 2s ease forwards;
+}
+
+@keyframes aboutMe {
+  0% {
+    transform: translateX(-60%);
+  }
+
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+.aboutInfoMe {
+  position: absolute;
+  font-size: 1.2rem;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 15px;
+}
+
+@-webkit-keyframes aboutInfoMe {
+  0% {
+    transform: translateX(50%);
+  }
+
+  100% {
+    transform: translateX(10%);
+  }
+}
+
+@keyframes aboutInfoMe {
+  0% {
+    transform: translateX(50%);
+  }
+
+  100% {
+    transform: translateX(10%);
+  }
+}
+
+.aboutInfoMe p {
+  margin: 15px auto;
+
+}
+
+/* PORTIFOLIO */
+
+
+
+/* RESPONSIVIDADE */
+@media (min-width: 62rem) {
+
+  header {
+    height: 100vh;
+  }
+
+  .name h1 {
+    font-size: 10rem;
+  }
+
+  .sobre span {
+    font-size: 2rem;
+  }
+
+  .aboutMe {
+    display: block;
+    opacity: 3%;
+  }
+
+  .aboutInfoMe {
+    font-size: 1.6rem;
+    text-align: left;
+  }
+
+  .aboutInfoMe.ativo {
+    animation: aboutInfoMe 2s ease forwards;
+  }
+}
