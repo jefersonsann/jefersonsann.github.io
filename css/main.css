@@ -49,12 +49,6 @@ body {
   color: var(--colorFont);
 }
 
-.container {
-  max-width: 85rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 ::selection {
   background-color: white;
   color: var(--bgColor);
