@@ -1,7 +1,9 @@
 :root {
   --bgColor: #0e1013;
   --colorFont: #d5d5d5;
-  --containerWidth: 100vw;
+  --colorTitle: #3d3f43;
+  --colorSubTitle: #68696a;
+  --container: 62rem;
   --containerHeight: calc(var(--elementHeight) + 50px);
   --elementWidth: 600px;
   --elementHeight: 400px;
@@ -54,6 +56,24 @@ body {
   color: var(--bgColor);
 }
 
+.container {
+  max-width: var(--container);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
 /* SCROLL BAR */
 ::-webkit-scrollbar {
   width: .60rem;
@@ -70,16 +90,13 @@ body {
   background-color: azure;
 }
 
-/* HEADER CSS */
+/* ================ HEADER CSS ================ */
 .header {
   width: 100%;
   height: calc(100vh - 53px);
   text-align: center;
-  display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
 }
 
 
@@ -88,6 +105,12 @@ body {
   font-weight: normal;
   font-size: 5rem;
   color: #fff;
+  animation: nameAnime 2s forwards;
+}
+
+.sobre {
+  transform: scale(0);
+  animation: .5s sobreAnime 2s forwards;
 }
 
 .sobre span {
@@ -97,102 +120,120 @@ body {
 }
 
 .setaBaixo {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 53px;
-
-  font-size: 0.8rem;
+  font-size: 2.2rem;
   color: var(--colorFont);
   animation: setaheader 1.5s ease-in-out infinite;
 }
 
-@keyframes setaheader {
-  0% {
-    transform: translateY(-20px);
-  }
+/* ================ MAIN ================ */
+.section__title {
+  margin-bottom: 2rem;
+  text-align: center;
+}
 
-  50% {
-    transform: translateY(0);
-  }
+.section__title h1 {
+  font-size: 5rem;
+  line-height: .9;
+  text-transform: uppercase;
+  color: var(--colorTitle);
+}
 
-  100% {
-    transform: translateY(-20px);
-  }
+.section__title h3 {
+  font-size: .7rem;
+  color: var(--colorSubTitle);
 }
 
 /* ABOUT CSS */
 
-.about {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#about {
   height: 100vh;
-  overflow: hidden;
 }
 
-.aboutMe {
-  display: none;
-  position: absolute;
-  font-size: 10rem;
-  color: var(--colorFont);
-  text-transform: uppercase;
-}
-
-.aboutMe.ativo {
-  animation: aboutMe 2s ease forwards;
-}
-
-@keyframes aboutMe {
-  0% {
-    transform: translateX(-60%);
-  }
-
-  100% {
-    transform: translateX(-25%);
-  }
-}
-
-.aboutInfoMe {
-  position: absolute;
+.about {
   font-size: 1.2rem;
   text-align: center;
-  max-width: 800px;
   padding: 0 15px;
 }
 
-@-webkit-keyframes aboutInfoMe {
-  0% {
-    transform: translateX(50%);
-  }
-
-  100% {
-    transform: translateX(10%);
-  }
-}
-
-@keyframes aboutInfoMe {
-  0% {
-    transform: translateX(50%);
-  }
-
-  100% {
-    transform: translateX(10%);
-  }
-}
-
-.aboutInfoMe p {
+.about p {
   margin: 15px auto;
-
 }
 
-/* PORTIFOLIO */
+/* SKILLS */
+#skills {
+  gap: 3rem;
+  min-height: 100vh;
+  overflow: hidden;
+}
 
+.skills {
+  display: grid;
+  gap: 3rem;
+}
 
+.skills__left {
+  gap: 3rem;
+}
 
-/* RESPONSIVIDADE */
+.skills__item .icon::before {
+  display: flex;
+  justify-content: center;
+  width: 60px;
+  height: 48px;
+  font-size: 3rem;
+  margin-right: 2rem;
+}
+
+.skills__item h2 {
+  font-size: 1.2rem;
+  color: var(--colorFont);
+}
+
+.skills__item p {
+  font-size: .9rem;
+  color: var(--colorSubTitle);
+}
+
+.skills__right {
+  justify-content: space-around;
+  gap: .5rem;
+}
+
+.skill__prog {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 1.5rem;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  background-color: #f1f1f1;
+  overflow: hidden;
+}
+
+.skill__prog span {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: -1px;
+  width: 130px;
+  height: 100%;
+  padding-left: 1rem;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.skill__prog p {
+  position: absolute;
+  align-self: center;
+  color: var(--colorTitle);
+  font-size: .85rem;
+  right: .5rem;
+}
+
+/*  ================ FOOTER ================ */
+
+/* ================ RESPONSIVIDADE ================ */
 @media (min-width: 62rem) {
 
   header {
@@ -212,12 +253,140 @@ body {
     opacity: 3%;
   }
 
-  .aboutInfoMe {
+  .about {
     font-size: 1.6rem;
-    text-align: left;
   }
 
-  .aboutInfoMe.ativo {
-    animation: aboutInfoMe 2s ease forwards;
+  .section__title h1 {
+    font-size: 10rem;
+    line-height: .9;
+  }
+
+  .section__title h3 {
+    font-size: 1rem;
+  }
+
+  .skills {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .skills__item h2 {
+    font-size: 2.3rem;
+  }
+
+  .skills__item p {
+    font-size: 1rem;
+  }
+
+  .skills__right {
+    gap: 2rem;
+  }
+
+  .skill__prog {
+    height: 4rem;
+  }
+
+  /* Animações */
+  .about.ativo {
+    animation: botTop 2s ease forwards;
+  }
+
+  .section__title.ativo {
+    animation: topBot 2s ease forwards;
+  }
+
+  .skills__right.ativo {
+    animation: rightLeft 2s ease forwards;
+  }
+
+  .skills__left.ativo {
+    animation: leftRight 2s ease forwards;
+  }
+}
+
+/* ================ ANIMATIONS ================ */
+@keyframes nameAnime {
+  0% {
+    transform: rotateX(.25turn);
+  }
+
+  25% {
+    transform: rotateX(10deg);
+  }
+
+  40% {
+    transform: rotateX(0deg);
+  }
+
+  70% {
+    transform: rotateX(-30deg);
+  }
+
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes sobreAnime {
+  0% {
+    transform: scale(0) translateY(-100%);
+  }
+
+  100% {
+    transform: scale(1) translateY(0rem);
+  }
+}
+
+@keyframes setaheader {
+  0% {
+    transform: translateY(-20px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes topBot {
+  0% {
+    transform: translateY(-50%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes botTop {
+  0% {
+    transform: translateY(50%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes leftRight {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes rightLeft {
+  0% {
+    transform: translateX(50%);
+  }
+
+  100% {
+    transform: translateX(0%);
   }
 }
