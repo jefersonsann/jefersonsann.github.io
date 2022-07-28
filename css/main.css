@@ -132,7 +132,7 @@ body {
 }
 
 .section__title h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   line-height: .9;
   text-transform: uppercase;
   color: var(--colorTitle);
@@ -229,6 +229,11 @@ body {
   color: var(--colorTitle);
   font-size: .85rem;
   right: .5rem;
+}
+
+/* PORTIFOLIO */
+#portfolio {
+  min-height: 100vh;
 }
 
 /*  ================ FOOTER ================ */
