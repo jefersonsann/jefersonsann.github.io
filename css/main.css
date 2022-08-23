@@ -1,7 +1,7 @@
 :root {
   --bgColor: #0e1013;
   --colorFont: #d5d5d5;
-  --colorTitle: #3d3f43;
+  --colorTitle: #00d9ff;
   --colorSubTitle: #68696a;
   --container: 62rem;
   --containerHeight: calc(var(--elementHeight) + 50px);
@@ -19,12 +19,12 @@
 }
 
 @font-face {
-  font-family: "consola";
+  font-family: 'consola';
   src: url(fonts/consola.ttf);
 }
 
 @font-face {
-  font-family: "consola";
+  font-family: 'consola';
   src: local(consola), url(../fonts/consolab.ttf);
   font-weight: bold;
 }
@@ -76,13 +76,13 @@ body {
 
 /* SCROLL BAR */
 ::-webkit-scrollbar {
-  width: .60rem;
-  border-radius: .5rem;
+  width: 0.6rem;
+  border-radius: 0.5rem;
   background-color: var(--scroll-bar-color);
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   background-color: var(--scroll-thumb-color);
 }
 
@@ -99,7 +99,6 @@ body {
   flex-wrap: nowrap;
 }
 
-
 .name h1 {
   font-family: sienthas;
   font-weight: normal;
@@ -107,10 +106,11 @@ body {
   color: #fff;
   animation: nameAnime 2s forwards;
 }
-
+.name h1::before,
+.name h1::after,
 .sobre {
   transform: scale(0);
-  animation: .5s sobreAnime 2s forwards;
+  animation: 0.5s sobreAnime 2s forwards;
 }
 
 .sobre span {
@@ -133,13 +133,13 @@ body {
 
 .section__title h1 {
   font-size: 4rem;
-  line-height: .9;
+  line-height: 0.9;
   text-transform: uppercase;
   color: var(--colorTitle);
 }
 
 .section__title h3 {
-  font-size: .7rem;
+  font-size: 0.7rem;
   color: var(--colorSubTitle);
 }
 
@@ -153,6 +153,7 @@ body {
   font-size: 1.2rem;
   text-align: center;
   padding: 0 15px;
+  line-height: 1.5;
 }
 
 .about p {
@@ -190,13 +191,13 @@ body {
 }
 
 .skills__item p {
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: var(--colorSubTitle);
 }
 
 .skills__right {
   justify-content: space-around;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .skill__prog {
@@ -226,9 +227,9 @@ body {
 .skill__prog p {
   position: absolute;
   align-self: center;
-  color: var(--colorTitle);
-  font-size: .85rem;
-  right: .5rem;
+  color: var(--bgColor);
+  font-size: 0.85rem;
+  right: 0.5rem;
 }
 
 /* PORTIFOLIO */
@@ -240,13 +241,24 @@ body {
 
 /* ================ RESPONSIVIDADE ================ */
 @media (min-width: 62rem) {
-
   header {
     height: 100vh;
   }
 
   .name h1 {
     font-size: 10rem;
+  }
+  .name h1::before {
+    margin-right: 2rem;
+    content: '<';
+    display: inline-block;
+    color: var(--colorTitle);
+  }
+  .name h1::after {
+    content: '/>';
+    margin-left: 2rem;
+    display: inline-block;
+    color: var(--colorTitle);
   }
 
   .sobre span {
@@ -264,7 +276,7 @@ body {
 
   .section__title h1 {
     font-size: 10rem;
-    line-height: .9;
+    line-height: 0.9;
   }
 
   .section__title h3 {
@@ -312,7 +324,7 @@ body {
 /* ================ ANIMATIONS ================ */
 @keyframes nameAnime {
   0% {
-    transform: rotateX(.25turn);
+    transform: rotateX(0.25turn);
   }
 
   25% {
