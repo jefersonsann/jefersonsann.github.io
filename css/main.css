@@ -69,6 +69,11 @@ body {
   justify-content: center;
   align-items: center;
 }
+.grid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
 
 .column {
   flex-direction: column;
@@ -93,7 +98,7 @@ body {
 /* ================ HEADER CSS ================ */
 .header {
   width: 100%;
-  height: calc(100vh - 53px);
+  height: calc(100vh - 41px);
   text-align: center;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -146,7 +151,7 @@ body {
 /* ABOUT CSS */
 
 #about {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .about {
@@ -234,7 +239,59 @@ body {
 
 /* PORTIFOLIO */
 #portfolio {
+  gap: 3rem;
   min-height: 100vh;
+}
+.portfolio {
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+.portfolio__card {
+  display: grid;
+  width: 300px;
+  height: 400px;
+  background-color: var(--colorTitle);
+  border: 4px solid;
+  border-image: linear-gradient(
+      to right,
+      rgba(0, 212, 255, 0.6),
+      rgba(0, 212, 255, 1) 50%,
+      rgba(0, 212, 255, 0.6) 100%
+    )
+    1;
+}
+
+.portfolio__card--item {
+  width: 100%;
+  height: 100%;
+}
+.portfolio__card--image {
+}
+.portfolio__card--desc {
+  grid-area: 1/1;
+}
+.skeleton {
+  grid-area: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-image: linear-gradient(90deg, #191919 0px, #222 50%, #191919 100%);
+  background-color: #eee;
+  background-size: 200%;
+  animation: skeleton 1.5s infinite linear;
+}
+.skeleton span {
+  grid-area: 1/1;
+}
+
+@keyframes skeleton {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -200%;
+  }
 }
 
 /*  ================ FOOTER ================ */
@@ -318,6 +375,12 @@ body {
 
   .skills__left.ativo {
     animation: leftRight 2s ease forwards;
+  }
+  .portfolio.ativo {
+    animation: botTop 2s ease forwards;
+  }
+  .portfolio {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
