@@ -11,10 +11,35 @@
   </head>
 
   <body>
-    <header>
+    <!-- MAIN MENU -->
+    <button id="mbtn" class="mbtn">menu<i></i></button>
+    <menu id="menu" class="menu">
+      <div class="menu__top">
+        <a href="#home">JS</a>
+        <span>Front-end dev</span>
+      </div>
+      <nav class="menu__nav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#portfolio">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="menu__social">
+        <ul>
+          <li><a href="#">linkedin</a></li>
+          <li><a href="#">github</a></li>
+        </ul>
+      </div>
+    </menu>
+    <!-- FIM MAIN MENU -->
+    <!-- HEADER -->
+    <header id="home">
       <div class="header flex">
         <div class="name">
-          <h1>Jeferson santos</h1>
+          <h1 id="animaName" class="blast">Jeferson santos</h1>
         </div>
         <div class="sobre"><span>Front-end Developer</span></div>
       </div>
@@ -24,6 +49,8 @@
         </a>
       </div>
     </header>
+    <!-- FIM HEADER -->
+    <!-- MAIN SITE -->
     <main>
       <section id="about" class="flex column">
         <div class="section__title js-scroll flex column">
@@ -164,7 +191,10 @@
         </div>
       </section>
     </main>
+    <!-- FIM MAIN SITE -->
+    <!-- FOOTER -->
 
+    <!-- FIM FOOTER -->
     <script
       src="https://kit.fontawesome.com/50ae5e1a1c.js"
       crossorigin="anonymous"

@@ -1,5 +1,6 @@
 :root {
   --bgColor: #0e1013;
+  --bgColorMenu: #17191d;
   --colorFont: #d5d5d5;
   --colorTitle: #00d9ff;
   --colorSubTitle: #68696a;
@@ -40,15 +41,23 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: consolas;
+  color: var(--colorFont);
+  background-color: var(--bgColor);
+  background-image: url('../assets/dots-vetor.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+}
+a {
+  text-decoration: none;
+}
+
 img {
   display: block;
   max-width: 100%;
-}
-
-body {
-  background-color: var(--bgColor);
-  font-family: consolas;
-  color: var(--colorFont);
 }
 
 ::selection {
@@ -95,6 +104,117 @@ body {
   background-color: azure;
 }
 
+/* btn MOBILE */
+.mbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  z-index: 100;
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0;
+}
+.mbtn i {
+  width: 2rem;
+  height: 2px;
+  background-color: var(--colorFont);
+}
+.mbtn i::before,
+.mbtn i::after {
+  position: relative;
+  display: block;
+  content: '';
+  width: 1.8rem;
+  height: 2px;
+  background-color: var(--colorFont);
+  transition: all 0.3s ease-in-out;
+}
+.mbtn i::before {
+  top: -10px;
+}
+.mbtn i::after {
+  top: 8px;
+}
+.mbtn.ativo i {
+  background-color: transparent;
+}
+.mbtn.ativo i::before {
+  top: 0;
+  transform: rotate(135deg);
+}
+.mbtn.ativo i::after {
+  top: -2px;
+  transform: rotate(-135deg);
+}
+
+/* MENU CSS */
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 0;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: var(--bgColorMenu);
+  transition: all 0.3s ease-in-out;
+}
+.menu.ativo {
+  height: 100vh;
+  z-index: 99;
+  width: 100%;
+}
+.menu__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 180px;
+  background-color: #1f2228;
+}
+.menu__top a {
+  font-size: 6rem;
+  line-height: 0.8;
+  letter-spacing: -0.5rem;
+  text-shadow: -5px 5px #000;
+  color: var(--colorTitle);
+  font-weight: 900;
+}
+.menu__top span {
+  font-size: 0.8rem;
+  padding: 0.8rem 0;
+}
+.menu__nav {
+  width: 100%;
+  border-top: 1px solid var(--bgColor);
+}
+.menu__nav ul li a {
+  display: block;
+  font-size: 1.2rem;
+  padding: 0.8rem 0;
+  text-align: center;
+  color: var(--colorFont);
+  letter-spacing: 0.8;
+  border-bottom: 1px solid var(--bgColor);
+}
+.menu__nav ul li a:hover {
+  color: var(--colorTitle);
+  /* background-color: var(--colorSubTitle); */
+}
+.menu__social {
+}
 /* ================ HEADER CSS ================ */
 .header {
   width: 100%;
@@ -103,13 +223,25 @@ body {
   flex-direction: column;
   flex-wrap: nowrap;
 }
-
+.fake-h1 {
+  display: none;
+}
 .name h1 {
   font-family: sienthas;
   font-weight: normal;
   font-size: 5rem;
   color: #fff;
+}
+.name h1.blast {
   animation: nameAnime 2s forwards;
+}
+.name h1.rubberBand {
+  -webkit-animation-name: rubberBand;
+  animation-name: rubberBand;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 .name h1::before,
 .name h1::after,
@@ -137,7 +269,7 @@ body {
 }
 
 .section__title h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   line-height: 0.9;
   text-transform: uppercase;
   color: var(--colorTitle);
@@ -147,7 +279,6 @@ body {
   font-size: 0.7rem;
   color: var(--colorSubTitle);
 }
-
 /* ABOUT CSS */
 
 #about {
@@ -248,7 +379,7 @@ body {
 }
 .portfolio__card {
   display: grid;
-  width: 300px;
+  width: calc(100vw - 2rem);
   height: 400px;
   background-color: var(--colorTitle);
   border: 4px solid;
@@ -298,6 +429,12 @@ body {
 
 /* ================ RESPONSIVIDADE ================ */
 @media (min-width: 62rem) {
+  .mbtn {
+    display: none;
+  }
+  .menu {
+    width: 130px;
+  }
   header {
     height: 100vh;
   }
@@ -381,6 +518,9 @@ body {
   }
   .portfolio {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .portfolio__card {
+    width: 300px;
   }
 }
 
@@ -468,5 +608,73 @@ body {
 
   100% {
     transform: translateX(0%);
+  }
+}
+
+@-webkit-keyframes rubberBand {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes rubberBand {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    -ms-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    -ms-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    -ms-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    -ms-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    -ms-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    -ms-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
   }
 }
