@@ -222,6 +222,7 @@ img {
   text-align: center;
   flex-direction: column;
   flex-wrap: nowrap;
+  overflow: hidden;
 }
 .fake-h1 {
   display: none;
