@@ -1,3 +1,9 @@
+// Imports JS
+import Portfolio from './portfolio.js';
+
+// Init JS
+Portfolio();
+
 // Anima name hover
 const animaName = document.querySelector('#animaName');
 

@@ -375,10 +375,13 @@ img {
   min-height: 100vh;
 }
 .portfolio {
-  grid-template-columns: 1fr;
+  display: flex;
+  /* grid-template-columns: 1fr; */
   gap: 2rem;
+  overflow-x: hidden;
 }
 .portfolio__card {
+  flex: 1;
   display: grid;
   width: calc(100vw - 2rem);
   height: 400px;
@@ -391,6 +394,7 @@ img {
       rgba(0, 212, 255, 0.6) 100%
     )
     1;
+  overflow: hidden;
 }
 
 .portfolio__card--item {
@@ -398,6 +402,9 @@ img {
   height: 100%;
 }
 .portfolio__card--image {
+}
+.portfolio__card--image img {
+  object-fit: cover;
 }
 .portfolio__card--desc {
   grid-area: 1/1;
@@ -521,7 +528,8 @@ img {
     grid-template-columns: repeat(3, 1fr);
   }
   .portfolio__card {
-    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
   }
 }
 
