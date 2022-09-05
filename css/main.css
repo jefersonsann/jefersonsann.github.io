@@ -209,7 +209,8 @@ img {
   letter-spacing: 0.8;
   border-bottom: 1px solid var(--bgColor);
 }
-.menu__nav ul li a:hover {
+.menu__nav ul li a:hover,
+.menu__nav ul li a.active {
   color: var(--colorTitle);
   /* background-color: var(--colorSubTitle); */
 }

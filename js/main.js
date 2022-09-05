@@ -1,8 +1,10 @@
 // Imports JS
 import Portfolio from './portfolio.js';
+import MenuActive from './menuActive.js';
 
 // Init JS
 Portfolio();
+MenuActive();
 
 // Anima name hover
 const animaName = document.querySelector('#animaName');
